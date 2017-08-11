@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,5 +22,14 @@ public class App {
             Teams newTeam=new Teams("teamName");
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
+
+        get("/", (request, response) -> {
+            Map<String,Object> model=new HashMap<>();
+            ArrayList<Teams> teams = Teams.getAll();
+            model.put("teams", teams);
+            return new ModelAndView(model, "index.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
     }
 }
