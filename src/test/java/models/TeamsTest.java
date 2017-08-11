@@ -17,6 +17,12 @@ public class TeamsTest {
         assertEquals(true, teams instanceof Teams);
     }
 
+    @Test
+    public void newTeamsInstantiatesWithTeamName_true() throws Exception {
+        Teams teams = new Teams("TeamFusion");
+        assertEquals(true, teams.getTeamName());
+    }
+
     @After
     public void tearDown() throws Exception {
     }
