@@ -10,10 +10,7 @@ public class TeamsTest {
     @Before
     public void setUp() throws Exception {
     }
-    @After
-    public void tearDown() throws Exception {
-        Teams.clearAllTeams();
-    }
+
     @Test
     public void newTeamsObjectGetsCreatedCorrectly_true() throws Exception {
         Teams teams = new Teams("TeamFusion");
@@ -25,7 +22,10 @@ public class TeamsTest {
         Teams teams = new Teams("TeamFusion");
         assertEquals("TeamFusion", teams.getTeamName());
     }
-
+    @After
+    public void tearDown() throws Exception {
+        Teams.clearAllTeams();
+    }
     @Test
     public void allTeamsAreCorrectlyReturned_true(){
         Teams teams = new Teams("TeamFusion");
@@ -39,5 +39,12 @@ public class TeamsTest {
         Teams nextTeams = new Teams("Dragon Fever");
         assertTrue(Teams.getAll().contains(teams));
         assertTrue(Teams.getAll().contains(nextTeams));
+    }
+
+    @Test
+    public void getID_postsInstantiateWithID_1() throws Exception {
+        Teams.clearAllTeams();
+        Teams myTeam = new Teams("TeamFusion");
+        assertEquals(1,myTeam.getId());
     }
 }

@@ -1,7 +1,14 @@
 {{#partial "content"}}
 
 <h1>Teams list!</h1>
-
+  {{#if teams}}
+       {{#each teams }}
+        <p>Current team:</p>
+        <p>{{ teamName }}</p>
+       {{/each}}
+   {{else}}
+    <p>No Teams!</p>
+   {{/if}}
 <p>Add a new team!</p>
 
 <form action="/teams/new" method="POST">
