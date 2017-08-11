@@ -20,7 +20,7 @@ public class TeamsTest {
     @Test
     public void newTeamsInstantiatesWithTeamName_true() throws Exception {
         Teams teams = new Teams("TeamFusion");
-        assertEquals(true, teams.getTeamName());
+        assertEquals("TeamFusion", teams.getTeamName());
     }
 
     @After
