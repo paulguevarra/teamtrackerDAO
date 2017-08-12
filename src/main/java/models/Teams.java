@@ -25,4 +25,7 @@ public class Teams {
     public int getId(){
         return id;
     }
+    public static Teams locateById(int id){
+        return instances.get(id-1);
+    }
 }
