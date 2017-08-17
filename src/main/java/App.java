@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,22 +14,25 @@ public class App {
 
         get("/", (request, response) -> {
             Map<String,Object> model=new HashMap<>();
-            return new ModelAndView(model,"index.hbs");
+            ArrayList<Teams> teams = Teams.getAll();
+            model.put("teams", teams);
+            return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 
         post("/teams/new", (request, response) -> {
             Map<String,Object> model=new HashMap<>();
             String teamName=request.queryParams("teamName");
-            Teams newTeam=new Teams("teamName");
+            Teams newTeam=new Teams(teamName);
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
-        get("/", (request, response) -> {
-            Map<String,Object> model=new HashMap<>();
-            ArrayList<Teams> teams = Teams.getAll();
-            model.put("teams", teams);
-            return new ModelAndView(model, "index.hbs");
-        }, new HandlebarsTemplateEngine());
+//        get("/", (request, response) -> {
+//            Map<String,Object> model=new HashMap<>();
+//            return new ModelAndView(model,"index.hbs");
+//        }, new HandlebarsTemplateEngine());
+
+
+
 
 
     }
