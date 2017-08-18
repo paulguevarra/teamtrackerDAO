@@ -10,7 +10,10 @@ public class TeamsTest {
     @Before
     public void setUp() throws Exception {
     }
-
+    @After
+    public void tearDown() throws Exception {
+        Teams.clearAllTeams();
+    }
     @Test
     public void newTeamsObjectGetsCreatedCorrectly_true() throws Exception {
         Teams teams = setupNewTeam();
@@ -22,10 +25,7 @@ public class TeamsTest {
         Teams teams = setupNewTeam();
         assertEquals("TeamFusion", teams.getTeamName());
     }
-    @After
-    public void tearDown() throws Exception {
-        Teams.clearAllTeams();
-    }
+
     @Test
     public void allTeamsAreCorrectlyReturned_true(){
         Teams teams = setupNewTeam();
