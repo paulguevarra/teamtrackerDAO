@@ -1,6 +1,6 @@
 package models;
 
-import java.security.PrivateKey;
+
 import java.util.ArrayList;
 
 public class Teams {
@@ -27,5 +27,8 @@ public class Teams {
     }
     public static Teams locateById(int id){
         return instances.get(id-1);
+    }
+    public void update(String teamName){
+        this.teamName=teamName;
     }
 }

@@ -3,20 +3,12 @@
 <h1>Teams list!</h1>
   {{#if teams}}
        {{#each teams }}
-        <p>Current team:</p>
-        <p>{{ teamName }}</p>
+        <p>Team Name:</p>
+        <p>{{ teamName }} <a href="/teams/{{id}}">View details</a></p>
        {{/each}}
    {{else}}
     <p>No Teams!</p>
    {{/if}}
-<p>Add a new team!</p>
-
-<form action="/teams/new" method="POST">
-  <label for="teamName">Team Description</label>
-  <input id="teamName" name="teamName" type="text">
-
-  <button type="submit" class="btn btn-default">Add Team</button>
-</form>
 {{/partial}}
 
 {{> layout.hbs}}

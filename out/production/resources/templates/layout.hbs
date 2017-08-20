@@ -1,41 +1,30 @@
-{{#block "header"}}
+<!doctype html>
+<html>
+    <head>
+        <title>{{#block "title"}}Welcome to TeamTracker{{/block}}</title>
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel='stylesheet' href='/app.css'>
+    </head>
+    <body>
+        <ul class="nav nav-tabs">
+            <li role="presentation" class="active"><a href="#">Home</a></li>
+            <li role="presentation"><a href="/teams/new">Add a New Team</a></li>
+        </ul>
+        <div class="container">
+            <!--begin main template-->
+            <div class="page-header">
+               <img src="/images/caspar-rubin-224229.jpg" width="70%">
+               <h1>Welcome to TeamTracker. <small>Your tournament assistant!</small></h1>
+            </div>
 
-   <!doctype html>
-   <html lang="en">
-   <head>
-       <meta charset="UTF-8">
-       <meta name="viewport"
-             content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-       <meta http-equiv="X-UA-Compatible" content="ie=edge">
-       <title>{{#block "title"}}Welcome to TeamTracker{{/block}}</title>
-       <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
-       <link rel="stylesheet" href="/css/main.css">
-       <link rel='stylesheet' href='/app.css'>
-   </head>
-   <body>
-{{/block}}
-<ul class="nav nav-tabs">
-   <li role="presentation" class="active"><a href="#">Home</a></li>
-   <li role="presentation"><a href="/posts">See List of Teams</a></li>
-   <li role="presentation"><a href="/posts/new">Add a New Team</a></li>
-</ul>
-<div class="container">
-   <!--begin main template-->
-   <div class="page-header">
-       <img src="/images/caspar-rubin-224229.jpg" width="70%">
-       <h1>Welcome to TeamTracker. <small>Your tournament assistant!</small></h1>
-   </div>
+            <div class="col-md-12">
+                {{#block "content"}}
 
-   <div class="col-md-12">
-<div class="page">
-{{#block "content"}}
+                {{/block}}
+            </div>
+        </div>
+<!--end main template-->
 
-
-
-{{/block}}
-
-{{#block "footer"}}
-   </div>
-   </body>
-   </html>
-{{/block}}
+    </body>
+</html>

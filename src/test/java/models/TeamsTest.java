@@ -63,4 +63,13 @@ public class TeamsTest {
         return new Teams ("TeamFusion");
     }
 
+    @Test
+    public void updateChangesTeamContent() throws Exception {
+    Teams teams = setupNewTeam();
+    String formerTeamName = teams.getTeamName();
+    int formerId = teams.getId();
+    teams.update("Bridge City Paddlers");
+    assertEquals(formerId, teams.getId());
+    assertNotEquals(formerTeamName, teams.getTeamName());
+    }
 }
