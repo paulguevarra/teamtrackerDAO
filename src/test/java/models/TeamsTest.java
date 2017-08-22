@@ -42,7 +42,7 @@ public class TeamsTest {
     }
 
     @Test
-    public void getID_postsInstantiateWithID_1() throws Exception {
+    public void getID_teamsInstantiateWithID_1() throws Exception {
         Teams.clearAllTeams();
         Teams teams = setupNewTeam();
         assertEquals(1,teams.getId());
@@ -54,7 +54,7 @@ public class TeamsTest {
     }
 
     @Test
-    public void findReturnsCorrectPostWhenMoreThanOnePostExists() throws Exception {
+    public void findReturnsCorrectTeamWhenMoreThanOneTeamExists() throws Exception {
         Teams teams = setupNewTeam();
         Teams nextTeam = new Teams("Dragon Fever");
         assertEquals(2, Teams.locateById(nextTeam.getId()).getId());

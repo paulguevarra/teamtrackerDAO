@@ -3,6 +3,8 @@ package models;
 
 import org.junit.Test;
 
+import java.lang.reflect.Member;
+
 import static org.junit.Assert.*;
 
 public class MembersTest {
@@ -27,5 +29,10 @@ public class MembersTest {
         Members testMembers = setupNewMember();
         assertEquals(1, testMembers.getMemberTeamId());
     }
-
+    @Test
+    public void allMembersAreCorrectlyReturned_true(){
+        Members testMembers = setupNewMember();
+        Members nextMembers = new Members(1,"Oreo");
+        assertEquals(2,Members.getAll().size());
+    }
 }
