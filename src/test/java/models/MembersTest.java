@@ -20,6 +20,12 @@ public class MembersTest {
     public void newMember_getNewMemberName() throws Exception {
         Members testMembers = setupNewMember();
         assertEquals("Ducky", testMembers.getMemberName());
-
     }
+
+    @Test
+    public void newMember_getMemberTeamId() throws Exception {
+        Members testMembers = setupNewMember();
+        assertEquals(1, testMembers.getMemberTeamId());
+    }
+
 }
