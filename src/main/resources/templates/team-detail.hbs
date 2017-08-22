@@ -3,9 +3,19 @@
    <p>{{ teams.teamName }}</p>
    <h5>Team details:</h5>
     <p> Team ID# {{teams.id}}</p>
+    <br>
+    <p> Roster</p>
+    {{#if members}}
+        {{#each members}}
+            <li>{{memberId}}&nbsp{{memberName}}</li>
+    {{else}}
+        <p> There are no members listed on the roster</p>
+
+    {{/if}}
    <br>
-   <a href="/teams/{{teams.id}}/update">Modify Team Name</a><br>
-   <a href="/">Return to List</a>
+   <p class="btn btn-success"><a href="/members/new">Add Member</a></p>
+   <p class="btn btn-default"><a href="/teams/{{teams.id}}/update">Modify Team Name</a><br>
+   <p class="btn btn-warning"><a href="/">Return to List</a>
 
 {{/partial}}
 

@@ -1,8 +1,10 @@
 
+import java.lang.reflect.Member;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import models.Members;
 import models.Teams;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
@@ -62,6 +64,18 @@ public class App {
             editTeams.update(newTeamName);
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
+
+        //get: display member form
+        get("/members/new", (request,response)->{
+            Map<String, Object> model = new HashMap<>();
+            ArrayList<Teams> teams = Teams.getAll();
+            ArrayList<Members> members = Members.getAll();
+            model.put("teams",teams);
+            model.put("members",members);
+            return new ModelAndView(model, "member-form.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
 
         //get: delete an individual team
 

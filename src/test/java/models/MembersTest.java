@@ -35,4 +35,20 @@ public class MembersTest {
         Members nextMembers = new Members(1,"Oreo");
         assertEquals(2,Members.getAll().size());
     }
+
+    @Test
+    public void getNewMemberRosterIdNumber() throws Exception {
+        Members testMembers = setupNewMember();
+        assertEquals(1, testMembers.getMemberId());
+
+    }
+//
+//    @Test
+//    public void findAllMembersWithSameTeamId() throws Exception {
+//        Members testMembers = setupNewMember();
+//        Members nextMembers = new Members(1,"Oreo");
+//        Members otherMembers = new Members(2,"Tanner");
+//        Integer expected = 2;
+//        assertEquals(true,Members.getTeamRoster().size());
+//    }
 }
