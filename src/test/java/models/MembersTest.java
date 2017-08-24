@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 public class MembersTest {
 
     public Members setupNewMember(){
-        return new Members (1, "Ducky");
+        return new Members ("Ducky");
     }
     @Test
     public void newMember_instantiatesCorrectly() throws Exception {
@@ -24,17 +24,13 @@ public class MembersTest {
         assertEquals("Ducky", testMembers.getMemberName());
     }
 
-    @Test
-    public void newMember_getMemberTeamId() throws Exception {
-        Members testMembers = setupNewMember();
-        assertEquals(1, testMembers.getMemberTeamId());
-    }
-    @Test
-    public void allMembersAreCorrectlyReturned_true(){
-        Members testMembers = setupNewMember();
-        Members nextMembers = new Members(1,"Oreo");
-        assertEquals(2,Members.getAll().size());
-    }
+
+ //   @Test
+//    public void allMembersAreCorrectlyReturned_true(){
+//        Members testMembers = setupNewMember();
+//        Members nextMembers = new Members(1,"Oreo");
+//        assertEquals(2,Members.getAll().size());
+//    }
 
     @Test
     public void getNewMemberRosterIdNumber() throws Exception {

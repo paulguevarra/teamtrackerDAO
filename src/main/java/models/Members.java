@@ -1,16 +1,19 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Members {
-    private int memberTeamId;
+//    private int memberTeamId;
     private String memberName;
     private int memberId;
     private static ArrayList<Members> roster=new ArrayList<>();
-//    private static ArrayList<Members> teamRoster=new ArrayList<>();
+//    private static Map<String,Object> teamRoster=new HashMap<>();
 
-    public Members(int teamId, String memberName){
-        this.memberTeamId=teamId;
+
+    public Members(String memberName){
+//        this.memberTeamId=teamId;
         this.memberName=memberName;
         roster.add(this);
         this.memberId=roster.size();
@@ -18,15 +21,19 @@ public class Members {
     public String getMemberName(){
         return memberName;
     }
-    public int getMemberTeamId(){
-        return memberTeamId;
-    }
+//    public int getMemberTeamId(){
+//        return memberTeamId;
+//    }
     public static ArrayList<Members>getAll(){
         return roster;
     }
     public int getMemberId(){
         return memberId;
     }
+//    public static Map<String,Object>getTeamRoster(){
+//
+//        return teamRoster;
+//    }
 //    public static ArrayList<Members>getTeamRoster(Integer memberTeamId){
 //
 //        for (int i=0;i<roster.size();i++)
