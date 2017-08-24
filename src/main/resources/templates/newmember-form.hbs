@@ -3,7 +3,7 @@
     {{#if member}}
         <h1>Enter new member here!</h1>
 
-        <form action="/members/new" method="post">
+        <form action="/teams/{{id}}/members/new" method="post">
             <label for="memberName">member name</label>
             <input id="memberName" name="memberName" type="text">
 

@@ -15,6 +15,8 @@ public class App {
     public static void main(String[] args) {
         staticFileLocation("/public");
 
+        //Teams:
+
         //get: show new team form
         get("/teams/new", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
@@ -51,6 +53,7 @@ public class App {
         get("/teams/:id/update", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             int idOfTeamToEdit = Integer.parseInt(request.params("id"));
+            System.out.println(idOfTeamToEdit);
             Teams editTeam = Teams.locateById(idOfTeamToEdit);
             model.put("editTeam", editTeam);
             return new ModelAndView(model, "newteam-form.hbs");
@@ -66,8 +69,20 @@ public class App {
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
+        //Members:
+
+        //get: show new members form
+        get("/teams/:id/members/new", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<Teams> teams = Teams.getAll();
+            List<Members> members = Members.getAll();
+            model.put("teams", teams);
+            model.put("members", members);
+            return new ModelAndView(model, "newmember-form.hbs");
+        }, new HandlebarsTemplateEngine());
+
         //get: show all members list
-        get("/teams/{{teams.id}}/members", (request, response) -> {
+        get("/teams/:id/members", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             ArrayList<Members> members = Members.getAll();
             model.put("members", members);
@@ -75,7 +90,7 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         //post: process new members form
-        post("/teams/{{teams.id}}/members/new", (request, response) -> {
+        post("/teams/:id/members/new", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             String memberName = request.queryParams("memberName");
             Members members = new Members(memberName);
@@ -83,11 +98,6 @@ public class App {
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
-        //get: show new members form
-        get("/teams/{{teams.id}}/members/new", (request, response) -> {
-            Map<String, Object> model = new HashMap<>();
-            return new ModelAndView(model, "newMember-form.hbs");
-        }, new HandlebarsTemplateEngine());
 
     }
 }
