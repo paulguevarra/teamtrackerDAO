@@ -5,40 +5,41 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Members {
-//    private int memberTeamId;
+    private String memberTeam;
+    private int memberTeamId;
     private String memberName;
     private int memberId;
-    private static ArrayList<Members> roster=new ArrayList<>();
-//    private static Map<String,Object> teamRoster=new HashMap<>();
+    private static ArrayList<Members> roster = new ArrayList<>();
 
 
-    public Members(String memberName){
-//        this.memberTeamId=teamId;
-        this.memberName=memberName;
+    public Members(String memberName, String teamName, int teamId) {
+        this.memberTeam = teamName;
+        this.memberName = memberName;
         roster.add(this);
-        this.memberId=roster.size();
+        this.memberId = roster.size();
+        this.memberTeamId = teamId;
     }
-    public String getMemberName(){
+
+    public String getMemberName() {
         return memberName;
     }
-//    public int getMemberTeamId(){
-//        return memberTeamId;
-//    }
-    public static ArrayList<Members>getAll(){
+
+    public static ArrayList<Members> getAll() {
         return roster;
     }
-    public int getMemberId(){
+
+    public int getMemberId() {
         return memberId;
     }
-//    public static Map<String,Object>getTeamRoster(){
-//
-//        return teamRoster;
-//    }
-//    public static ArrayList<Members>getTeamRoster(Integer memberTeamId){
-//
-//        for (int i=0;i<roster.size();i++)
-//            if(memberTeamId.equals(roster.get(i)))
-//                teamRoster.add(i);
-//        return teamRoster;
-//    }
+    public static void clearAllMembers(){
+        roster.clear();
+    }
+    public String getMemberTeam() {
+        return memberTeam;
+    }
+
+    public int getMemberTeamId() {
+        return memberTeamId;
+    }
 }
+
