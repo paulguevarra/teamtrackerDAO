@@ -1,14 +1,20 @@
 {{#partial "content"}}
 
 
-        <h1>Enter new member here!</h1>
+<h1>Enter new member here!</h1>
 
-        <form action="/teams/{{teams.id}}/members/new" method="post">
-            <label for="memberName">member name</label>
-            <input id="memberName" name="memberName" type="text">
+<form action="/teams/{{teams.id}}/addMember" method="post">
+    <div class="form-control">
+        <label for="teamName">Team Name</label>
+        <input id="teamName" name="teamName type="text" value="{{modifiedTeam}}">
+    </div>
+    <div class="form-control">
+        <label for="memberThree">Add member to roster</label>
+        <input id="memberThree" name="memberThree" type="text" value="{{memberThree}}">
+    </div>
 
-            <button type="submit" class="btn btn-default">Add Member</button>
-        </form>
+    <button type="submit" class="btn btn-success">Update</button>
+</form>
 
 {{/partial}}
 

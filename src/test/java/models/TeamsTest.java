@@ -4,9 +4,12 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 public class TeamsTest {
+    ArrayList<String>members;
     @Before
     public void setUp() throws Exception {
     }
@@ -29,14 +32,14 @@ public class TeamsTest {
     @Test
     public void allTeamsAreCorrectlyReturned_true(){
         Teams teams = setupNewTeam();
-        Teams nextTeams = new Teams("Dragon Fever");
+        Teams nextTeams = new Teams("Dragon Fever", "Fitness is Goal");
         assertEquals(2,Teams.getAll().size());
     }
 
     @Test
     public void allTeamsContainsAllTeams_true() {
         Teams teams = setupNewTeam();
-        Teams nextTeams = new Teams("Dragon Fever");
+        Teams nextTeams = new Teams("Dragon Fever", "Fitness is Goal");
         assertTrue(Teams.getAll().contains(teams));
         assertTrue(Teams.getAll().contains(nextTeams));
     }
@@ -56,11 +59,11 @@ public class TeamsTest {
     @Test
     public void findReturnsCorrectTeamWhenMoreThanOneTeamExists() throws Exception {
         Teams teams = setupNewTeam();
-        Teams nextTeam = new Teams("Dragon Fever");
+        Teams nextTeam = new Teams("Dragon Fever", "Fitness is Goal");
         assertEquals(2, Teams.locateById(nextTeam.getId()).getId());
     }
     public Teams setupNewTeam(){
-        return new Teams ("TeamFusion");
+        return new Teams ("TeamFusion", "All are welcome");
     }
 
     @Test
@@ -68,8 +71,35 @@ public class TeamsTest {
     Teams teams = setupNewTeam();
     String formerTeamName = teams.getTeamName();
     int formerId = teams.getId();
-    teams.update("Bridge City Paddlers");
+    teams.update("Bridge City Paddlers", "Locally grown fanatics");
     assertEquals(formerId, teams.getId());
     assertNotEquals(formerTeamName, teams.getTeamName());
     }
+
+    @Test
+    public void addNewMembersToTeamRoster() throws Exception {
+        Teams teams = setupNewTeam();
+        ArrayList<String> roster = new ArrayList<>();
+        roster.add("ducky");
+        assertEquals(roster, teams.addToRoster("ducky"));
+    }
+
+    @Test
+    public void getAllMembersFromRoster() throws Exception {
+        Teams teams = setupNewTeam();
+        ArrayList<String>roster = new ArrayList<>();
+        assertEquals(roster, teams.getRoster());
+    }
+
+    @Test
+    public void getTeamDescription() throws Exception {
+        Teams teams = setupNewTeam();
+        assertEquals("All are welcome", teams.getDescription());
+    }
+
+    //    @Test
+//    public void locateTeamByNameCorrectly() {
+//    Teams teams = setupNewTeam();
+//    assertEquals(teams, teams.locateTeam("Team Fusion"));
+//    }
 }

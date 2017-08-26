@@ -1,27 +1,29 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
     <head>
         <title>{{#block "title"}}Welcome to TeamTracker{{/block}}</title>
         <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
-        <link rel="stylesheet" href="/css/main.css">
         <link rel='stylesheet' href='/app.css'>
     </head>
     <body>
-        <ul class="nav nav-tabs">
-            <li role="presentation" class="active"><a href="#">Home</a></li>
-            <li role="presentation"><a href="/teams/new">Add a New Team</a></li>
-        </ul>
         <div class="container">
-            <!--begin main template-->
-            <div class="page-header">
-               <img src="/images/crew.jpg" width="100%">
-               <h1>Welcome to TeamTracker. <small>Your tournament assistant!</small></h1>
-            </div>
 
-            <div class="col-md-12">
-                {{#block "content"}}
+            <ul class="nav nav-tabs">
+                <li role="presentation" class="active"><a href="/">Home</a></li>
+                <li role="presentation"><a href="/teams/new">Add a New Team</a></li>
+            </ul>
+            <div class="container">
+                <!--begin main template-->
+                <div class="page-header well">
+                   <img src="/images/crew.jpg" width="20%">
+                   <h1>Welcome to TeamTracker. <small>Your tournament assistant!</small></h1>
+                </div>
 
-                {{/block}}
+                <div class="col-md-12">
+                    {{#block "content"}}
+
+                    {{/block}}
+                </div>
             </div>
         </div>
 <!--end main template-->
