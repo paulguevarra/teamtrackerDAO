@@ -8,6 +8,7 @@ body {
     color: #b642f4;
     width: 600px;
     padding: 60px;
+    text-shadow:2px 1px grey;
 }
 
 .page-header {
@@ -18,6 +19,13 @@ body {
 img {
     border: 2px solid black;
 }
+.cheer {
+    float: right;
+    margin-right:15%;
+}
+.completed {
+    padding-left: 15%;
+}
 
 .well {
     border: 2px solid black;
@@ -26,4 +34,10 @@ img {
 .form-control {
     border: 2px solid black;
     padding: 5px;
+}
+.btn {
+    color: black;
+}
+p.btn {
+    color: black;
 }

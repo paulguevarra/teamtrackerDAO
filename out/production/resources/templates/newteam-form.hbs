@@ -1,5 +1,5 @@
 {{#partial "content"}}
-
+<div class="well">
     {{#if editTeam}}
         <h1>Edit this Team!</h1>
         <form action="/teams/{{editTeam.id}}/update" method="post">
@@ -48,6 +48,7 @@
 
         </form>
     {{/if}}
+</div>
 {{/partial}}
 
 {{> layout.hbs}}

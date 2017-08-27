@@ -1,6 +1,24 @@
 {{#partial "content"}}
-
-<h1>Teams list!</h1>
+<div class="well">
+    <h1>Instructions</h1>
+    <p>To add a team:
+        <ol>
+            <li>Click the "Add a New Team" link at the top of the page.</li>
+            <li>Enter the name of the team, a team description, and the names of the team members</li>
+            <li>Click the "Submit Entry" button once completed</li>
+        </ol>
+    </p>
+    <p>To modify an existing team or add another member to the team:
+        <ol>
+            <li>Click on the "View Team Page" link next to the team you would like to modify</li>
+            <li>Click the "Modify Team/Add Member" button</li>
+            <li>Enter any team information changes that need to be modified and/or the name of the team member you would like to add to the team roster</li>
+            <li>Click the "Submit Entry" button once completed</li>
+        </ol>
+    </p>
+</div>
+<div class="well">
+    <h1>Teams list!</h1>
     {{#if teams}}
         {{#each teams }}
             <div class="well">
@@ -11,8 +29,10 @@
             </div>
         {{/each}}
     {{else}}
-        <p>No Teams!</p>
+        <p>No teams have been entered at this time.</p>
+
     {{/if}}
+</div>
 {{/partial}}
 
 {{> layout.hbs}}
