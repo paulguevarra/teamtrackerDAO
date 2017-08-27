@@ -1,0 +1,29 @@
+body {
+    font-size: 16px;
+    background-color: #CCC6C4;
+}
+
+.welcome {
+    float: right;
+    color: #b642f4;
+    width: 600px;
+    padding: 60px;
+}
+
+.page-header {
+    border: 3px solid black;
+
+}
+
+img {
+    border: 2px solid black;
+}
+
+.well {
+    border: 2px solid black;
+}
+
+.form-control {
+    border: 2px solid black;
+    padding: 5px;
+}

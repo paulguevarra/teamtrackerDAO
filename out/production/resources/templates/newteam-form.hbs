@@ -4,17 +4,17 @@
         <h1>Edit this Team!</h1>
         <form action="/teams/{{editTeam.id}}/update" method="post">
             <div class="form-control">
-                <label for="teamName">Edit this team's name</label>
+                <label for="teamName">Edit this team's name:&nbsp;</label>
                 <input id="teamName" name="teamName" type="text" value="{{editTeam.teamName}}">
             </div>
             <br>
             <div class="form-control">
-                <label for="description">Edit this team's description</label>
+                <label for="description">Edit this team's description:&nbsp;</label>
                 <input id="description" name="description" type="text" value="{{editTeam.description}}">
             </div>
             <br>
             <div class="form-control">
-                <label for="memberThree">Add member to roster</label>
+                <label for="memberThree">Add member to roster:&nbsp;</label>
                 <input id="memberThree" name="memberThree" type="text" value="{{anotherMember}}">
             </div>
             <br>
@@ -25,22 +25,22 @@
 
         <form action="/teams/new" method="post">
             <div class="form-control">
-                <label for="teamName">Team Name</label>
+                <label for="teamName">Team Name:&nbsp;</label>
                 <input id="teamName" name="teamName" type="text">
             </div>
             <br>
             <div class="form-control">
-                <label for="description">Team Description</label>
+                <label for="description">Team Description:&nbsp;</label>
                 <input id="description" name="description" type="text">
             </div>
             <br>
             <div class="form-control">
-                <label for="memberOne">Member Name</label>
+                <label for="memberOne">Member Name:&nbsp;</label>
                 <input id="memberOne" name="memberOne" type="text">
             </div>
             <br>
             <div class="form-control">
-                <label for="memberTwo">Next Member Name</label>
+                <label for="memberTwo">Next Member Name:&nbsp;</label>
                 <input id="memberTwo" name="memberTwo" type="text">
             </div>
             <br>
