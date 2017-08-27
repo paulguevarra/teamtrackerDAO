@@ -6,20 +6,22 @@
 
 ## Description
 
-_This web application will allow a user to track teams and their members._
+_This web application will allow a user to track multiple teams and their members._
 
 ## Setup/Installation Requirements
-
+* _Access TeamTracker repository at "https://github.com/paulguevarra/teamtracker.git"_
+* _Clone repository into computer_
 * _Open web browser_
-* _Enter website address "https://paulguevarra.github.io/teamtracker/"_
+* _Enter website address "0.0.0.0:4567"_
 * _Browse through content_
 
 ## Specs "it can..."
 | Description                                        | Input                                       | Output              |
 | -------------------------------------------------- | -------------------------------------------:| ------------------: |
-| Find  | abc | 123 |
-| Find  | abc | 123 |
-
+| Create a new team object | team details | add new team to list |
+| Modify team name  | former team name | new team name |
+| Modify team description  | former team description | new team description |
+| Add another member to the team  | new member name | add to team roster |
 
 
 
@@ -34,6 +36,7 @@ _For further issues or questions, please contact: Paul Guevarra email:p.a.guevar
 * _Java_
 * _CSS_
 * _Spark_
+* _Handlebars_
 
 ### License
 

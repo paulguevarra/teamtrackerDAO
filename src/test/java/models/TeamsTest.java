@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import static org.junit.Assert.*;
 
 public class TeamsTest {
-    ArrayList<String>members;
+
     @Before
     public void setUp() throws Exception {
     }
