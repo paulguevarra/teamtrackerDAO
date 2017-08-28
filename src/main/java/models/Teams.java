@@ -4,63 +4,54 @@ package models;
 import java.util.ArrayList;
 
 public class Teams {
-    private String teamName;
+    private String teamname;
     private String description;
-    private static ArrayList<Teams> instances=new ArrayList<>();
     private int id;
-    private Members members;
-    private ArrayList<Members> roster;
 
-    public Teams(String teamName,String description){
-        this.teamName=teamName;
+
+
+    public Teams(String teamname, String description){
+        this.teamname=teamname;
         this.description=description;
-        this.roster=new ArrayList<>();
-        instances.add(this);
-        this.id=instances.size();
     }
-
-    public String getTeamName(){
-        return teamName;
+    public String getTeamname(){
+        return teamname;
     }
-
     public String getDescription() {
         return description;
     }
 
-    public ArrayList<Members>addToRoster(Members members){
-        this.roster.add(members);
-        return roster;
-    }
-
-    public Members getMembers() {
-        return members;
-    }
-
-
-    public static ArrayList<Teams> getAll(){
-        return instances;
-    }
-
-    public static void clearAllTeams(){
-        instances.clear();
-    }
-
-    public int getId(){
+    public int getId() {
         return id;
     }
 
-    public static Teams locateById(int id){
-        return instances.get(id-1);
+    public void setId(int id) {
+        this.id = id;
     }
-
-    public void update(String teamName, String description){
-        this.teamName=teamName;
+    public void setDescription(String description) {
         this.description = description;
     }
-
-    public ArrayList<Members> getRoster() {
-        return roster;
+    public void setTeamname(String teamname) {
+        this.teamname = teamname;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
+        Teams teams = (Teams) o;
+
+        if (id != teams.id) return false;
+        if (!teamname.equals(teams.teamname)) return false;
+        return description.equals(teams.description);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = teamname.hashCode();
+        result = 31 * result + description.hashCode();
+        result = 31 * result + id;
+        return result;
+    }
 }
