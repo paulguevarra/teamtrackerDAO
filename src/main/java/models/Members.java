@@ -5,30 +5,21 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Members {
-    private String memberTeam;
+
     private int teamId;
     private String memberName;
     private int memberId;
-    private static ArrayList<Members> allMembers = new ArrayList<>();
-    private ArrayList<String> teamRoster;
 
-    public Members(String name, int teamId){
-        memberName = name;
-        this.teamId = teamId;
-        this.teamRoster=new ArrayList<>();
-        teamRoster.add(name);
-        allMembers.add(this);
-        this.memberId=allMembers.size();
-
-
+    public Members(String name, int id){
+        this.memberName = name;
+        this.teamId = id;
     }
-
+    public void setMemberId(int memberId) {
+        this.memberId = memberId;
+    }
     public void setMemberName(String name){ this.memberName=name;}
     public void setTeamId(int teamId){ this.teamId=teamId;}
-    public void updateMember(String name, int teamId){
-        this.memberName=name;
-        this.teamId=teamId;
-    }
+
     public String getMemberName() {
         return memberName;
     }
@@ -36,22 +27,25 @@ public class Members {
         return teamId;
     }
 
-    public ArrayList<String> getTeamRoster(){
-        return teamRoster;
+    public int getMemberId() {
+        return memberId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Members members = (Members) o;
+
+        if (teamId != members.teamId) return false;
+        return memberName.equals(members.memberName);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = teamId;
+        result = 31 * result + memberName.hashCode();
+        return result;
     }
 }
-//
-//    public static ArrayList<Members> getAllMembers() {
-//        return roster;
-//    }
-
-//    public int getMemberId() {
-//        return memberId;
-//    }
-//    public static void clearAllMembers(){
-//        roster.clear();
-//    }
-//    public String getMemberTeam() {
-//        return memberTeam;
-//    }
-

@@ -62,6 +62,14 @@ public class Sql2oTeamsDao implements TeamDao {
     }
 
     @Override
+    public List<Members> getAllMembersByTeamId(int id) {
+        try(Connection con = sql2o.open()){
+            return con.createQuery("SELECT * FROM members WHERE id = :id")
+                    .addParameter("id", id)
+                    .executeAndFetch(Members.class);
+        }
+    }
+    @Override
     public void deleteTeam(int id) {
         String sql = "DELETE FROM teams WHERE id=:id"; //raw sql
         try (Connection con = sql2o.open()) {
