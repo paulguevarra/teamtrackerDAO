@@ -95,6 +95,7 @@ public class TeamsTest {
         assertEquals("All are welcome", teams.getDescription());
     }
 
+
     //helper
     public Teams setupNewTeam(){
         return new Teams ("TeamFusion", "All are welcome");

@@ -27,7 +27,7 @@ public class Members {
         return memberName;
     }
 
-    public static ArrayList<Members> getAll() {
+    public static ArrayList<Members> getAllMembers() {
         return roster;
     }
 

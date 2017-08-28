@@ -17,10 +17,22 @@ public class MembersTest {
         assertEquals("Oreo", newMember.getMemberName());
     }
 
+    @Test
+    public void addAnotherMemberToRoster_IdentifyByCount() throws Exception {
+        Members newMember = setupNewMember();
+        Members newMemberTwo = setupNewMemberTwo();
+        assertEquals(2,Members.getAllMembers().size());
+    }
+
     //Helper
     public Members setupNewMember(){
         Members newMember = new Members();
         newMember.setAnotherMember("Oreo");
+        return newMember;
+    }
+    public Members setupNewMemberTwo(){
+        Members newMember = new Members();
+        newMember.setAnotherMember("Tanner");
         return newMember;
     }
 
