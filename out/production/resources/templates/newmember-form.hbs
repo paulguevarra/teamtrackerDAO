@@ -1,21 +1,16 @@
 {{#partial "content"}}
-
-
-<h1>Enter new member here!</h1>
-
-<form action="/teams/{{teams.id}}/addMember" method="post">
-    <div class="form-control">
-        <label for="teamName">Team Name</label>
-        <input id="teamName" name="teamName type="text" value="{{modifiedTeam}}">
+    <div class="well">
+        {{#if modifyTeamRoster}}
+            <h1>Add a new member to the roster!</h1>
+            <form action="/teams/{{modifyTeamRoster.id}}/addMember" method="post">
+                <div class="form-control">
+                    <label for="name">Member Name:&nbsp; </label>
+                    <input id="name" name="name" type="text" class="inputs">
+                </div>
+                <button type="submit" class="btn btn-success">Update Roster</button>
+            </form>
+        {{/if}}
     </div>
-    <div class="form-control">
-        <label for="memberThree">Add member to roster</label>
-        <input id="memberThree" name="memberThree" type="text" value="{{memberThree}}">
-    </div>
-
-    <button type="submit" class="btn btn-success">Update</button>
-</form>
-
 {{/partial}}
 
 {{> layout.hbs}}

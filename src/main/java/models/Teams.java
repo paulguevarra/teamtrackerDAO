@@ -8,8 +8,8 @@ public class Teams {
     private String description;
     private static ArrayList<Teams> instances=new ArrayList<>();
     private int id;
-    private String members;
-    private ArrayList<String> roster;
+    private Members members;
+    private ArrayList<Members> roster;
 
     public Teams(String teamName,String description){
         this.teamName=teamName;
@@ -27,12 +27,12 @@ public class Teams {
         return description;
     }
 
-    public ArrayList<String>addToRoster(String memberName){
-        this.roster.add(memberName);
+    public ArrayList<Members>addToRoster(Members members){
+        this.roster.add(members);
         return roster;
     }
 
-    public String getMembers() {
+    public Members getMembers() {
         return members;
     }
 
@@ -58,8 +58,9 @@ public class Teams {
         this.description = description;
     }
 
-    public ArrayList<String> getRoster() {
+    public ArrayList<Members> getRoster() {
         return roster;
     }
+
 
 }

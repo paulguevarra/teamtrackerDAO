@@ -12,48 +12,42 @@ import static org.junit.Assert.*;
 
 public class MembersTest {
     @Test
-    public void addAnotherMemberToRoster_IdentifyByName(){
+    public void addAnotherMemberToRoster_IdentifyByName() {
         Members newMember = setupNewMember();
         assertEquals("Oreo", newMember.getMemberName());
     }
 
+//    @Test
+//    public void addAnotherMemberToRoster_IdentifyByCount() throws Exception {
+//        Members newMember = setupNewMember();
+//        Members newMemberTwo = setupNewMemberTwo();
+//        assertEquals(2, Members.getAllMembers().size());
+//    }
+
     @Test
-    public void addAnotherMemberToRoster_IdentifyByCount() throws Exception {
-        Members newMember = setupNewMember();
-        Members newMemberTwo = setupNewMemberTwo();
-        assertEquals(2,Members.getAllMembers().size());
+    public void getIdOfTeamMemberBelongsTo() throws Exception {
+        Members testMembers = setupNewMember();
+        Members anotherMember = setupNewMemberTwo();
+        assertEquals(1,testMembers.getTeamId());
     }
+
 
     //Helper
-    public Members setupNewMember(){
-        Members newMember = new Members();
-        newMember.setAnotherMember("Oreo");
-        return newMember;
-    }
-    public Members setupNewMemberTwo(){
-        Members newMember = new Members();
-        newMember.setAnotherMember("Tanner");
-        return newMember;
+    public Members setupNewMember() {
+        return new Members("Oreo", 1);
     }
 
+    public Members setupNewMemberTwo() {
+        return new Members("Tanner", 2);
+    }
 
+}
 //    @Test
 //    public void newMember_instantiatesCorrectly() throws Exception {
 //        Members testMembers = setupNewMember();
 //        assertEquals(true, testMembers instanceof Members);
 //    }
 
-//    @Test
-//    public void newMember_getNewMemberName() throws Exception {
-//        Members testMembers = setupNewMember();
-//        assertEquals("Ducky", testMembers.getMemberName());
-//    }
-
-//    @Test
-//    public void getIdOfTeamMemberBelongs() throws Exception {
-//        Members testMembers = setupNewMember();
-//        assertEquals(1,testMembers.getMemberTeamId());
-//    }
 //   @Test
 //    public void allMembersAreCorrectlyReturned_true(){
 //        Members testMembers = setupNewMember();
@@ -74,12 +68,4 @@ public class MembersTest {
 //        assertEquals("Team Fusion", testMembers.getMemberTeam());
 //    }
     //
-//    @Test
-//    public void findAllMembersWithSameTeamId() throws Exception {
-//        Members testMembers = setupNewMember();
-//        Members nextMembers = new Members(1,"Oreo");
-//        Members otherMembers = new Members(2,"Tanner");
-//        Integer expected = 2;
-//        assertEquals(true,Members.getTeamRoster().size());
-//    }
-}
+

@@ -27,12 +27,7 @@ public class App {
             ArrayList<String>roster=new ArrayList<>();
             String teamName = request.queryParams("teamName");
             String teamDescription = request.queryParams("description");
-            String memberOne = request.queryParams("memberOne");
-            System.out.println(memberOne);
-            String memberTwo = request.queryParams("memberTwo");
             Teams teams = new Teams(teamName, teamDescription);
-            teams.addToRoster(memberOne);
-            teams.addToRoster(memberTwo);
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
@@ -57,8 +52,10 @@ public class App {
         get("/teams/:id", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             int idOfTeamToFind = Integer.parseInt(request.params("id"));
+            List<Members> members = Teams.getRoster(idOfTeamToFind);
             Teams foundTeam = Teams.locateById(idOfTeamToFind);
             model.put("teams", foundTeam);
+            model.put("members",members);
             return new ModelAndView(model, "team-detail.hbs");
         }, new HandlebarsTemplateEngine());
 
@@ -72,16 +69,38 @@ public class App {
             return new ModelAndView(model, "newteam-form.hbs");
         }, new HandlebarsTemplateEngine());
 
+        //get: show a form to update team roster
+        get("/teams/:id/addMember", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfTeamToEdit = Integer.parseInt(request.params("id"));
+            System.out.println(idOfTeamToEdit);
+            Teams modifyTeamRoster = Teams.locateById(idOfTeamToEdit);
+            model.put("modifyTeamRoster", modifyTeamRoster);
+            return new ModelAndView(model, "newmember-form.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        //post: add new member to team roster
+        post("/teams/:id/addMember", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            String memberName = request.queryParams("name");
+            int teamId=Integer.parseInt(request.params("id"));
+            Members anotherMember = new Members(memberName,teamId);
+            anotherMember.updateMember(memberName,teamId);
+            Teams modifyTeamRoster = Teams.locateById(teamId);
+            modifyTeamRoster.addToRoster(anotherMember);
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
+
         //post: process a form to update an individual team
         post("/teams/:id/update", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             String newTeamName = request.queryParams("teamName");
             String newDescription = request.queryParams("description");
-            String memberThree = request.queryParams("memberThree");
+//            String memberThree = request.queryParams("memberThree");
             int idOfTeamToEdit = Integer.parseInt(request.params("id"));
             Teams editTeams = Teams.locateById(idOfTeamToEdit);
             editTeams.update(newTeamName, newDescription);
-            editTeams.addToRoster(memberThree);
+//            editTeams.addToRoster(memberThree);
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 

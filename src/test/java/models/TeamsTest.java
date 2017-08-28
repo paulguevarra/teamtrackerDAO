@@ -77,9 +77,10 @@ public class TeamsTest {
     @Test
     public void addNewMembersToTeamRoster() throws Exception {
         Teams teams = setupNewTeam();
-        ArrayList<String> roster = new ArrayList<>();
-        roster.add("ducky");
-        assertEquals(roster, teams.addToRoster("ducky"));
+        Members testMember = new Members("ducky", 1);
+        ArrayList<Object> roster = new ArrayList<>();
+        roster.add(testMember);
+        assertEquals(roster, teams.addToRoster(testMember));
     }
 
     @Test

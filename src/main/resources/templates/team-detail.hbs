@@ -5,12 +5,28 @@
         <h5>Team details:</h5>
         <p>{{teams.description}}</p>
         <p>Team ID# {{teams.id}}</p>
-        <ul>
-            <li>Team Roster Members: &nbsp; {{teams.roster}}</li>
-        </ul>
+        <h5>Team Roster Members:</h5>
+        {{#if members}}
+            {{#each}}
+                <p>{{name}}</p>
+            {{/each}}
+        {{/if}}
 
+
+        <!--<div class="well">-->
+            <!--<h1>Add a new member to the roster!</h1>-->
+
+            <!--<form action="/teams/{{teams.id}}/addMember" method="post">-->
+                <!--<div class="form-control">-->
+                    <!--<label for="name">Member Name: </label>-->
+                    <!--<input id="name" name="name" type="text" class="inputs" required>-->
+                <!--</div>-->
+                <!--<button type="submit" class="btn btn-info">Update Roster</button>-->
+            <!--</form>-->
+        <!--</div>-->
         <br>
-        <p class="btn btn-success"><a href="/teams/{{teams.id}}/update">Modify Team/Add Member</a></p> &nbsp;
+        <p class="btn btn-success"><a href="/teams/{{teams.id}}/update">Modify Team Info</a></p> &nbsp;
+        <p class="btn btn-info"><a href="/teams/{{teams.id}}/addMember">Modify Team Roster</a></p> &nbsp;
         <p class="btn btn-warning"><a href="/">Return to Home Page</a></p>
     </div>
 {{/partial}}
