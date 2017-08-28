@@ -62,9 +62,7 @@ public class TeamsTest {
         Teams nextTeam = new Teams("Dragon Fever", "Fitness is Goal");
         assertEquals(2, Teams.locateById(nextTeam.getId()).getId());
     }
-    public Teams setupNewTeam(){
-        return new Teams ("TeamFusion", "All are welcome");
-    }
+
 
     @Test
     public void updateChangesTeamContent() throws Exception {
@@ -97,9 +95,9 @@ public class TeamsTest {
         assertEquals("All are welcome", teams.getDescription());
     }
 
-    //    @Test
-//    public void locateTeamByNameCorrectly() {
-//    Teams teams = setupNewTeam();
-//    assertEquals(teams, teams.locateTeam("Team Fusion"));
-//    }
+    //helper
+    public Teams setupNewTeam(){
+        return new Teams ("TeamFusion", "All are welcome");
+    }
+
 }

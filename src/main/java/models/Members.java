@@ -11,13 +11,16 @@ public class Members {
     private int memberId;
     private static ArrayList<Members> roster = new ArrayList<>();
 
-
-    public Members(String memberName, String teamName, int teamId) {
-        this.memberTeam = teamName;
-        this.memberName = memberName;
+    public Members(){
         roster.add(this);
-        this.memberId = roster.size();
-        this.memberTeamId = teamId;
+    }
+
+    public void setAnotherMember(String name) {
+//        this.memberTeam = teamName;
+        memberName = name;
+//        roster.add(this);
+//        this.memberId = roster.size();
+//        this.memberTeamId = teamId;
     }
 
     public String getMemberName() {
@@ -28,18 +31,18 @@ public class Members {
         return roster;
     }
 
-    public int getMemberId() {
-        return memberId;
-    }
-    public static void clearAllMembers(){
-        roster.clear();
-    }
-    public String getMemberTeam() {
-        return memberTeam;
-    }
+//    public int getMemberId() {
+//        return memberId;
+//    }
+//    public static void clearAllMembers(){
+//        roster.clear();
+//    }
+//    public String getMemberTeam() {
+//        return memberTeam;
+//    }
 
-    public int getMemberTeamId() {
-        return memberTeamId;
-    }
+//    public int getMemberTeamId() {
+//        return memberTeamId;
+//    }
 }
 
