@@ -6,29 +6,29 @@ import java.util.Map;
 
 public class Members {
 
-    private int teamId;
-    private String memberName;
-    private int memberId;
+    private int teamid;
+    private String membername;
+    private int memberid;
 
-    public Members(String name, int id){
-        this.memberName = name;
-        this.teamId = id;
+    public Members(String membername, int teamid){
+        this.membername = membername;
+        this.teamid = teamid;
     }
-    public void setMemberId(int memberId) {
-        this.memberId = memberId;
+    public void setMemberId(int memberid) {
+        this.memberid = memberid;
     }
-    public void setMemberName(String name){ this.memberName=name;}
-    public void setTeamId(int teamId){ this.teamId=teamId;}
+    public void setMemberName(String membername){ this.membername=membername;}
+    public void setTeamId(int teamid){ this.teamid=teamid;}
 
     public String getMemberName() {
-        return memberName;
+        return membername;
     }
     public int getTeamId() {
-        return teamId;
+        return teamid;
     }
 
     public int getMemberId() {
-        return memberId;
+        return memberid;
     }
 
     @Override
@@ -38,14 +38,14 @@ public class Members {
 
         Members members = (Members) o;
 
-        if (teamId != members.teamId) return false;
-        return memberName.equals(members.memberName);
+        if (teamid != members.teamid) return false;
+        return membername.equals(members.membername);
     }
 
     @Override
     public int hashCode() {
-        int result = teamId;
-        result = 31 * result + memberName.hashCode();
+        int result = teamid;
+        result = 31 * result + membername.hashCode();
         return result;
     }
 }

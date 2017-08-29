@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Teams {
     private String teamname;
     private String description;
-    private int id;
+    private int teamid;
 
 
 
@@ -20,13 +20,12 @@ public class Teams {
     public String getDescription() {
         return description;
     }
-
     public int getId() {
-        return id;
+        return teamid;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int teamid) {
+        this.teamid = teamid;
     }
     public void setDescription(String description) {
         this.description = description;
@@ -42,7 +41,7 @@ public class Teams {
 
         Teams teams = (Teams) o;
 
-        if (id != teams.id) return false;
+        if (teamid != teams.teamid) return false;
         if (!teamname.equals(teams.teamname)) return false;
         return description.equals(teams.description);
     }
@@ -51,7 +50,7 @@ public class Teams {
     public int hashCode() {
         int result = teamname.hashCode();
         result = 31 * result + description.hashCode();
-        result = 31 * result + id;
+        result = 31 * result + teamid;
         return result;
     }
 }

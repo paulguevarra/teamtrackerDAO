@@ -15,16 +15,16 @@ public class Sql2oMembersDao implements MemberDao{
 
     @Override
     public void addMember(Members members) {
-        String sql = "INSERT INTO members (name, teamid) VALUES (:name, :teamid)";
+        String sql = "INSERT INTO members (membername, teamid) VALUES (:membername, :teamid)";
         try(Connection con = sql2o.open()){
-            int id = (int) con.createQuery(sql)
-                    .addParameter("name", members.getMemberName())
+            int memberid = (int) con.createQuery(sql)
+                    .addParameter("membername", members.getMemberName())
                     .addParameter("teamid", members.getTeamId())
-                    .addColumnMapping("NAME", "name")
+                    .addColumnMapping("MEMBERNAME", "membername")
                     .addColumnMapping("TEAMID", "teamid")
                     .executeUpdate()
                     .getKey();
-            members.setMemberId(id);
+            members.setMemberId(memberid);
         } catch (Sql2oException ex) {
             System.out.println(ex); //oops we have an error!
         }
@@ -39,22 +39,22 @@ public class Sql2oMembersDao implements MemberDao{
     }
 
     @Override
-    public Members locateMemberById(int id) {
+    public Members locateMemberById(int memberid) {
         try (Connection con = sql2o.open()) {
-            return con.createQuery("SELECT * FROM members WHERE id = :id")
-                    .addParameter("id", id)
+            return con.createQuery("SELECT * FROM members WHERE memberid = :memberid")
+                    .addParameter("memberid", memberid)
                     .executeAndFetchFirst(Members.class);
         }
     }
 
     @Override
-    public void updateMember(String newName, int newId, int memberId) {
-        String sql = "UPDATE members SET (name, newId) = (:name, :id) WHERE memberId=:memberId";
+    public void updateMember(String membername, int teamid, int memberid) {
+        String sql = "UPDATE members SET (membername, teamid) = (:membername, :teamid) WHERE memberid=:memberid";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
-                    .addParameter("name", newName)
-                    .addParameter("id", newId)
-                    .addParameter("memberId", memberId)
+                    .addParameter("membername", membername)
+                    .addParameter("teamid", teamid)
+                    .addParameter("memberid", memberid)
                     .executeUpdate();
         }catch (Sql2oException ex) {
             System.out.println(ex);
@@ -62,11 +62,11 @@ public class Sql2oMembersDao implements MemberDao{
     }
 
     @Override
-    public void deleteMember(int number){
-        String sql = "DELETE from members WHERE memberId=:memberId";
+    public void deleteMember(int memberid){
+        String sql = "DELETE from members WHERE memberid=:memberid";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
-                    .addParameter("memberId", number)
+                    .addParameter("memberid", memberid)
                     .executeUpdate();
         } catch (Sql2oException ex){
             System.out.println(ex);
