@@ -11,12 +11,12 @@ public interface TeamDao {
 
     //read
     List<Teams> getAllTeams();
-    List<Members>getAllMembersByTeamId(int id);
-    Teams locateById(int id);
+    List<Members>getAllMembersByTeamId(int teamid);
+    Teams locateById(int teamid);
     //update
-    void update(String teamName, String Description, int id);
+    void update(String teamName, String Description, int teamid);
     //delete
-    void deleteTeam(int id);
+    void deleteTeam(int teamid);
     void deleteAllTeams();
 
 }

@@ -1,17 +1,17 @@
 {{#partial "content"}}
     <div class="well">
         <h5>Team name:</h5>
-        <p>{{ teams.teamName }}</p>
+        <p>{{ teams.teamname }}</p>
         <h5>Team details:</h5>
         <p>{{teams.description}}</p>
         <p>Team ID# {{teams.id}}</p>
         <h5>Team Roster Members:</h5>
-        {{#if members}}
-            {{#each}}
-                <p>{{name}}</p>
+        <ol>
+            {{#each members}}
+                <li><a href="/teams/{{teams.id}}/members/{{memberid}}">{{name}}</a>
+                </li>
             {{/each}}
-        {{/if}}
-
+        </ol>
 
         <!--<div class="well">-->
             <!--<h1>Add a new member to the roster!</h1>-->
