@@ -18,7 +18,7 @@ public class Sql2oTeamsDao implements TeamDao {
     }
 
     @Override
-    public void addTeam(Teams teams) {
+    public void addteam(Teams teams) {
         String sql = "INSERT INTO teams (teamname,description) VALUES (:teamname, :description)";
         try(Connection con = sql2o.open()){
             int teamid = (int) con.createQuery(sql)
@@ -29,14 +29,14 @@ public class Sql2oTeamsDao implements TeamDao {
 
                     .executeUpdate()
                     .getKey();
-            teams.setId(teamid);
+            teams.setTeamid(teamid);
         } catch (Sql2oException ex) {
             System.out.println(ex); //oops we have an error!
         }
     }
 
     @Override
-    public List<Teams> getAllTeams() {
+    public List<Teams> getAllteams() {
         try(Connection con = sql2o.open()){
             return con.createQuery("SELECT * FROM teams")
                     .executeAndFetch(Teams.class); //fetch a list
@@ -44,7 +44,7 @@ public class Sql2oTeamsDao implements TeamDao {
     }
 
     @Override
-    public Teams locateById(int number) {
+    public Teams locatebyid(int number) {
         try(Connection con = sql2o.open()){
             return con.createQuery("SELECT * FROM teams WHERE teamid = :teamid")
                     .addParameter("teamid", number)
@@ -52,12 +52,12 @@ public class Sql2oTeamsDao implements TeamDao {
         }
     }
     @Override
-    public void update(String newName, String newDescription, int teamid){
+    public void update(String newname, String newdescription, int teamid){
         String sql = "UPDATE teams SET (teamname,description) = (:teamname, :description) WHERE teamid=:teamid";
         try(Connection con = sql2o.open()){
             con.createQuery(sql)
-                    .addParameter("teamname", newName)
-                    .addParameter("description", newDescription)
+                    .addParameter("teamname", newname)
+                    .addParameter("description", newdescription)
                     .addParameter("teamid",teamid )
                     .executeUpdate();
         } catch (Sql2oException ex) {
@@ -66,7 +66,7 @@ public class Sql2oTeamsDao implements TeamDao {
     }
 
     @Override
-    public List<Members> getAllMembersByTeamId(int teamid) {
+    public List<Members> getAllmembersbyteamid(int teamid) {
         try(Connection con = sql2o.open()){
             return con.createQuery("SELECT * FROM members WHERE teamid = :teamid")
                     .addParameter("teamid", teamid)
@@ -74,7 +74,7 @@ public class Sql2oTeamsDao implements TeamDao {
         }
     }
     @Override
-    public void deleteTeam(int teamid) {
+    public void deleteteam(int teamid) {
         String sql = "DELETE FROM teams WHERE teamid=:teamid"; //raw sql
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
@@ -85,7 +85,7 @@ public class Sql2oTeamsDao implements TeamDao {
         }
     }
     @Override
-    public void deleteAllTeams() {
+    public void deleteallteams() {
         String sql = "DELETE FROM teams"; //raw sql
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)

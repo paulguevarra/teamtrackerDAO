@@ -1,16 +1,16 @@
 {{#partial "content"}}
 <div class="well">
-    {{#if editTeam}}
+    {{#if editteam}}
         <h1>Edit this Team!</h1>
-        <form action="/teams/{{editTeam.id}}/update" method="post">
+        <form action="/teams/{{editteam.teamid}}/update" method="post">
             <div class="form-control">
-                <label for="teamName">Edit this team's name:&nbsp;</label>
-                <input id="teamName" name="teamName" type="text" value="{{editTeam.teamName}}">
+                <label for="teamname">Edit this team's name:&nbsp;</label>
+                <input id="teamname" name="teamname" type="text" placeholder={{editteam.teamname}} value="{{editTeam.teamname}}">
             </div>
             <br>
             <div class="form-control">
                 <label for="description">Edit this team's description:&nbsp;</label>
-                <input id="description" name="description" type="text" value="{{editTeam.description}}">
+                <input id="description" name="description" type="text" placeholder={{editteam.description}} value="{{editTeam.description}}">
             </div>
             <br>
             <div class="form-control">
@@ -25,8 +25,8 @@
 
         <form action="/teams/new" method="post">
             <div class="form-control">
-                <label for="teamName">Team Name:&nbsp;</label>
-                <input id="teamName" name="teamName" type="text">
+                <label for="teamname">Team Name:&nbsp;</label>
+                <input id="teamname" name="teamname" type="text">
             </div>
             <br>
             <div class="form-control">
@@ -34,14 +34,6 @@
                 <input id="description" name="description" type="text">
             </div>
             <br>
-            <div class="form-control">
-                <label for="memberOne">Member Name:&nbsp;</label>
-                <input id="memberOne" name="memberOne" type="text">
-            </div>
-            <br>
-            <div class="form-control">
-                <label for="memberTwo">Next Member Name:&nbsp;</label>
-                <input id="memberTwo" name="memberTwo" type="text">
             </div>
             <br>
             <button type="submit" class="btn btn-success">Submit Entry</button>
@@ -52,10 +44,6 @@
 {{/partial}}
 
 {{> layout.hbs}}
-
-
-
-
 
 
 

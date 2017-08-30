@@ -13,6 +13,7 @@ public class Teams {
     public Teams(String teamname, String description){
         this.teamname=teamname;
         this.description=description;
+
     }
     public String getTeamname(){
         return teamname;
@@ -20,11 +21,11 @@ public class Teams {
     public String getDescription() {
         return description;
     }
-    public int getId() {
+    public int getTeamid() {
         return teamid;
     }
 
-    public void setId(int teamid) {
+    public void setTeamid(int teamid) {
         this.teamid = teamid;
     }
     public void setDescription(String description) {

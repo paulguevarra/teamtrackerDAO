@@ -18,20 +18,20 @@ public class Sql2oMembersDao implements MemberDao{
         String sql = "INSERT INTO members (membername, teamid) VALUES (:membername, :teamid)";
         try(Connection con = sql2o.open()){
             int memberid = (int) con.createQuery(sql)
-                    .addParameter("membername", members.getMemberName())
-                    .addParameter("teamid", members.getTeamId())
+                    .addParameter("membername", members.getMembername())
+                    .addParameter("teamid", members.getTeamid())
                     .addColumnMapping("MEMBERNAME", "membername")
                     .addColumnMapping("TEAMID", "teamid")
                     .executeUpdate()
                     .getKey();
-            members.setMemberId(memberid);
+            members.setMemberid(memberid);
         } catch (Sql2oException ex) {
             System.out.println(ex); //oops we have an error!
         }
     }
 
     @Override
-    public List<Members> getAllMembers() {
+    public List<Members> getAllmembers() {
         try(Connection con = sql2o.open()){
             return con.createQuery("SELECT * FROM members")
                     .executeAndFetch(Members.class);
@@ -39,7 +39,7 @@ public class Sql2oMembersDao implements MemberDao{
     }
 
     @Override
-    public Members locateMemberById(int memberid) {
+    public Members locatememberbyid(int memberid) {
         try (Connection con = sql2o.open()) {
             return con.createQuery("SELECT * FROM members WHERE memberid = :memberid")
                     .addParameter("memberid", memberid)
@@ -48,7 +48,7 @@ public class Sql2oMembersDao implements MemberDao{
     }
 
     @Override
-    public void updateMember(String membername, int teamid, int memberid) {
+    public void updatemember(String membername, int teamid, int memberid) {
         String sql = "UPDATE members SET (membername, teamid) = (:membername, :teamid) WHERE memberid=:memberid";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
@@ -62,7 +62,7 @@ public class Sql2oMembersDao implements MemberDao{
     }
 
     @Override
-    public void deleteMember(int memberid){
+    public void deletemember(int memberid){
         String sql = "DELETE from members WHERE memberid=:memberid";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
@@ -74,7 +74,7 @@ public class Sql2oMembersDao implements MemberDao{
     }
 
     @Override
-    public void deleteAllMembers() {
+    public void deleteallmembers() {
         String sql = "DELETE from members";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
