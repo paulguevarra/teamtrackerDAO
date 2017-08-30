@@ -7,7 +7,7 @@
         <form action="/teams/{{editmember.teamid}}/members/{{editmember.memberid}}/update" method="post">
             <div class="form-control">
                 <label for="membername">Modify member name:&nbsp;</label>
-                <input id="membername" name="memberame" type="text" placeholder={{editmember.membername}}>
+                <input id="membername" name="membername" type="text" placeholder={{editmember.membername}}>
                 <button type="submit" class="btn btn-warning">ENTER</button>
             </div>
         </form>
@@ -16,7 +16,7 @@
 
             <h1>Enter new member here!</h1>
 
-            <form action="/members/new" method="post">
+            <form action="/teams/{{teams.teamid}}/members/new" method="post">
                 <div class="form-control">
                     <label for="teamName">Team Name:&nbsp;</label>
                     <select id="teamName" name="teamName" type="text">
@@ -27,8 +27,8 @@
                 </div>
                 <br>
                 <div class="form-control">
-                    <label for="membername">Team Description:&nbsp;</label>
-                    <input id="membername" name="membername" type="text">
+                    <label for="membername">New member name:&nbsp;</label>
+                    <input id="membername" name="membername" type="text"required>
                 </div>
                 <br>
                 <br>

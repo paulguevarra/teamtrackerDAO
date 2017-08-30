@@ -5,12 +5,12 @@
         <form action="/teams/{{editteam.teamid}}/update" method="post">
             <div class="form-control">
                 <label for="teamname">Edit this team's name:&nbsp;</label>
-                <input id="teamname" name="teamname" type="text" placeholder={{editteam.teamname}} value="{{editTeam.teamname}}">
+                <input id="teamname" name="teamname" type="text" placeholder={{editteam.teamname}} value="{{editTeam.teamname}}" required>
             </div>
             <br>
             <div class="form-control">
                 <label for="description">Edit this team's description:&nbsp;</label>
-                <input id="description" name="description" type="text" placeholder={{editteam.description}} value="{{editTeam.description}}">
+                <input id="description" name="description" type="text" placeholder={{editteam.description}} value="{{editTeam.description}}" required>
             </div>
             <br>
             <div class="form-control">
@@ -26,12 +26,12 @@
         <form action="/teams/new" method="post">
             <div class="form-control">
                 <label for="teamname">Team Name:&nbsp;</label>
-                <input id="teamname" name="teamname" type="text">
+                <input id="teamname" name="teamname" type="text" required>
             </div>
             <br>
             <div class="form-control">
                 <label for="description">Team Description:&nbsp;</label>
-                <input id="description" name="description" type="text">
+                <input id="description" name="description" type="text"required>
             </div>
             <br>
             </div>

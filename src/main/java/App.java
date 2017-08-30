@@ -37,29 +37,9 @@ public class App {
             String teamdescription = request.queryParams("description");
             Teams teams = new Teams(teamname, teamdescription);
             teamDao.addteam(teams);
+            List<Teams> teamsList = teamDao.getAllteams();
             model.put("teams", teams);
             return new ModelAndView(model, "success.hbs");
-        }, new HandlebarsTemplateEngine());
-
-        //get: show all teams list
-        get("/", (request, response) -> {
-            Map<String, Object> model = new HashMap<>();
-            List<Teams> teamsList = teamDao.getAllteams();
-            model.put("teams", teamsList);
-            List<Members> membersList = memberDao.getAllmembers();
-            model.put("members", membersList);
-            return new ModelAndView(model, "index.hbs");
-        }, new HandlebarsTemplateEngine());
-
-        //get: show an individual team
-        get("/teams/:teamid", (request, response) -> {
-            Map<String, Object> model = new HashMap<>();
-            int idofteamtofind = Integer.parseInt(request.params("teamid"));
-            Teams foundteam = teamDao.locatebyid(idofteamtofind);
-            model.put("teams", foundteam);
-            List<Members> membersList = teamDao.getAllmembersbyteamid(idofteamtofind);
-            model.put("members", membersList);
-            return new ModelAndView(model, "team-detail.hbs");
         }, new HandlebarsTemplateEngine());
 
         //get: show a form to update an individual team
@@ -72,14 +52,6 @@ public class App {
             List<Members> members = memberDao.getAllmembers();
             model.put("members", members);
             return new ModelAndView(model, "newteam-form.hbs");
-        }, new HandlebarsTemplateEngine());
-
-        //get: delete a member of a specific team
-        get("/teams/:teamid/members/:memberid/delete", (req, res) -> {
-            Map<String, Object> model = new HashMap<>();
-            int idofmember = Integer.parseInt(req.params("memberid"));
-            memberDao.deletemember(idofmember);
-            return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
         //post: process a form to update an individual team
@@ -95,6 +67,35 @@ public class App {
             memberDao.addMember(newmember);
             model.put("member", newmember);
             model.put("editteam", editteams);
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        //get: show all teams list
+        get("/", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<Members> membersList = memberDao.getAllmembers();
+            model.put("members", membersList);
+            List<Teams> teamsList = teamDao.getAllteams();
+            model.put("teams", teamsList);return new ModelAndView(model, "index.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        //get: show an individual team
+        get("/teams/:teamid", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idofteamtofind = Integer.parseInt(request.params("teamid"));
+            Teams foundteam = teamDao.locatebyid(idofteamtofind);
+            model.put("teams", foundteam);
+            List<Members> membersList = teamDao.getAllmembersbyteamid(idofteamtofind);
+            model.put("members", membersList);
+            return new ModelAndView(model, "team-detail.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
+        //get: delete a member of a specific team
+        get("/teams/:teamid/members/:memberid/delete", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idofmember = Integer.parseInt(req.params("memberid"));
+            memberDao.deletemember(idofmember);
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
@@ -124,32 +125,36 @@ public class App {
             return new ModelAndView(model, "newmember-form.hbs");
         }, new HandlebarsTemplateEngine());
 
-        //post: process a form to update an individual team
+        //post: process a form to update an individual member
         post("/teams/:teamid/member/:memberid/update", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             String membername = request.queryParams("membername");
             int idofteamtoedit = Integer.parseInt(request.params("teamid"));
             int idofmembertoedit = Integer.parseInt(request.params("memberid"));
-//            Members editmember = memberDao.locatememberbyid(idofteamtoedit);
-            memberDao.updatemember(membername, idofteamtoedit,memberDao.locatememberbyid(idofteamtoedit).getTeamid());
+            memberDao.updatemember(membername, idofteamtoedit,idofmembertoedit);
+            List<Members> members= memberDao.getAllmembers();
+            model.put("members", members);
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
+        get("/teams/:teamid/members/new", (request, response)->{
+            Map<String, Object> model = new HashMap<>();
+            int idofteamtoedit = Integer.parseInt(request.params("teamid"));
+            String membername=request.queryParams("membername");
+            List<Teams> teams = teamDao.getAllteams();
+            List<Members> members = memberDao.getAllmembers();
+            model.put("teams",teams);
+            model.put("members",members);
+            return new ModelAndView(model, "newmember-form.hbs");
+        }, new HandlebarsTemplateEngine());
     }
-
 }
+
 //        //remove a team
 //
 
 //        //Members:
-//        //get: display member form
-//        get("/members/new", (req,res)->{
-//            Map<String, Object> model = new HashMap<>();
-//            List<Teams> teams = teamDao.getAllTeams();
-//            List<Members> members = memberDao.getAllMembers();
-//            model.put("teams",teams);
-//            model.put("members",members);
-//            return new ModelAndView(model, "newmember-form.hbs");
-//        }, new HandlebarsTemplateEngine());
+        //get: display member form
+
 //
 //        //post: process member team form
 //        post("/members/new", (req,res)->{
