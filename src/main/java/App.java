@@ -17,7 +17,7 @@ import static spark.Spark.*;
 public class App {
     public static void main(String[] args) {
         staticFileLocation("/public");
-        String connectionString = "jdbc:h2:~/todolist.db;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
+        String connectionString = "jdbc:h2:~/team-members.db;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
         Sql2o sql2o = new Sql2o(connectionString, "", "");
         Sql2oMembersDao memberDao = new Sql2oMembersDao(sql2o);
         Sql2oTeamsDao teamDao = new Sql2oTeamsDao(sql2o);
