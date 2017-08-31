@@ -36,37 +36,37 @@ public class Sql2oTeamsDaoTest {
     @Test
     public void addingTeamSetsId() throws Exception {
         Teams teams = setupTeam();
-        int originalTeamId = teams.getId();
-        teamDao.addTeam(teams);
-        assertNotEquals(originalTeamId, teams.getId());
+        int originalTeamId = teams.getTeamid();
+        teamDao.addteam(teams);
+        assertNotEquals(originalTeamId, teams.getTeamid());
     }
     @Test
     public void existingTeamsCanBeFoundById() throws Exception {
         Teams teams = setupTeam();
-        teamDao.addTeam(teams);
-        Teams foundTeam = teamDao.locateById(teams.getId());
+        teamDao.addteam(teams);
+        Teams foundTeam = teamDao.locatebyid(teams.getTeamid());
         assertEquals(teams, foundTeam);
     }
 
     @Test
     public void addedTeamsAreReturnedFromgetAll() throws Exception {
         Teams teams = setupTeam();
-        teamDao.addTeam(teams);
-        assertEquals(1, teamDao.getAllTeams().size());
+        teamDao.addteam(teams);
+        assertEquals(1, teamDao.getAllteams().size());
     }
 
     @Test
     public void noTeamsReturnsEmptyList() throws Exception {
-        assertEquals(0, teamDao.getAllTeams().size());
+        assertEquals(0, teamDao.getAllteams().size());
     }
 
     @Test
     public void locateTeamById() throws Exception {
         Teams teams = setupTeam();
         Teams anotherTeam = setupTeam2();
-        teamDao.addTeam(teams);
-        teamDao.addTeam(anotherTeam);
-        assertEquals(anotherTeam, teamDao.locateById(anotherTeam.getId()));
+        teamDao.addteam(teams);
+        teamDao.addteam(anotherTeam);
+        assertEquals(anotherTeam, teamDao.locatebyid(anotherTeam.getTeamid()));
     }
 
 }

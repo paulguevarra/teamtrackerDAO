@@ -39,16 +39,16 @@ public class Sql2oMembersDaoTest {
     @Test
     public void addingMemberSetsId() throws Exception {
         Members members = setUpNewMember();
-        int originalMemberId = members.getMemberId();
+        int originalMemberId = members.getMemberid();
         memberDao.addMember(members);
-        assertNotEquals(originalMemberId,members.getMemberId());
+        assertNotEquals(originalMemberId,members.getMemberid());
     }
 
     @Test
     public void existingMembersCanBeFoundById() throws Exception {
         Members members = setUpNewMember();
         memberDao.addMember(members);
-        Members foundMember = memberDao.locateMemberById(members.getMemberId());
+        Members foundMember = memberDao.locatememberbyid(members.getMemberid());
         assertEquals(members, foundMember);
     }
 
@@ -56,29 +56,29 @@ public class Sql2oMembersDaoTest {
     public void addMembersAreReturnedFromGetAll() {
         Members member = setUpNewMember();
         memberDao.addMember(member);
-        assertEquals(1, memberDao.getAllMembers().size());
+        assertEquals(1, memberDao.getAllmembers().size());
     }
 
     @Test
     public void noMembersReturnsEmptyList() throws Exception {
-        assertEquals(0, memberDao.getAllMembers().size());
+        assertEquals(0, memberDao.getAllmembers().size());
     }
 
     @Test
     public void updateChangesMemberContent() throws Exception {
         Members member = setUpNewMember();
         memberDao.addMember(member);
-        memberDao.updateMember("Tanner", 1,member.getMemberId());
-        Members updatedMember = memberDao.locateMemberById(member.getMemberId());
-        assertNotEquals(member, updatedMember.getMemberName());
+        memberDao.updatemember("Tanner", 1,member.getMemberid());
+        Members updatedMember = memberDao.locatememberbyid(member.getMemberid());
+        assertNotEquals(member, updatedMember.getMembername());
     }
 
     @Test
     public void deleteById_DeletesCorrectMember_0() throws Exception {
         Members member = setUpNewMember();
         memberDao.addMember(member);
-        memberDao.deleteMember(member.getMemberId());
-        assertEquals(0, memberDao.getAllMembers().size());
+        memberDao.deletemember(member.getMemberid());
+        assertEquals(0, memberDao.getAllmembers().size());
     }
 
     @Test
@@ -87,17 +87,17 @@ public class Sql2oMembersDaoTest {
         Members otherMember = setUpNewMember2();
         memberDao.addMember(member);
         memberDao.addMember(otherMember);
-        int rosterSize = memberDao.getAllMembers().size();
-        memberDao.deleteAllMembers();
-        assertTrue(rosterSize>0 && rosterSize> memberDao.getAllMembers().size());
+        int rosterSize = memberDao.getAllmembers().size();
+        memberDao.deleteallmembers();
+        assertTrue(rosterSize>0 && rosterSize> memberDao.getAllmembers().size());
     }
 
     @Test
     public void TeamIdIsReturnedCorrectly() throws Exception {
         Members member = setUpNewMember();
-        int originalTeamId = member.getTeamId();
+        int originalTeamId = member.getTeamid();
         memberDao.addMember(member);
-        assertEquals(originalTeamId, memberDao.locateMemberById(member.getMemberId()).getTeamId());
+        assertEquals(originalTeamId, memberDao.locatememberbyid(member.getMemberid()).getTeamid());
     }
 
 

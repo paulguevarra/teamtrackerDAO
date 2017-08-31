@@ -9,14 +9,14 @@
 
             {{#if members}}
                 {{#each members}}
-                        <li>{{membername}}&nbsp;&nbsp;<p class ="btn btn-warning btn-xs"><a href="/teams/{{this.teamid}}/members/{{this.memberid}}/update">Edit member</a></p>&nbsp;<p class ="btn btn-danger btn-xs"><a href="/teams/{{this.teamid}}/members/{{this.memberid}}/delete">Delete member</a></p>
+                        <li> Member ID# {{memberid}} &nbsp;&nbsp; Member name:&nbsp;{{membername}}&nbsp;&nbsp;<p class ="btn btn-warning btn-xs"><a href="/teams/{{this.teamid}}/members/{{this.memberid}}/update">Edit member</a></p>&nbsp;<p class ="btn btn-danger btn-xs"><a href="/teams/{{this.teamid}}/members/{{this.memberid}}/delete">Delete member</a></p>
                         </li>
                 {{/each}}
             {{/if}}
 
         <br>
-        <p class="btn btn-success"><a href="/teams/{{teams.teamid}}/update">Modify Team Info</a></p> &nbsp;
-        <p class="btn btn-info"><a href="/teams/{{teams.teamid}}/members/new">Add Member</a></p> &nbsp;
+        <p class="btn btn-success"><a href="/teams/{{teams.teamid}}/update">Modify Team Info or Add Member</a></p> &nbsp;
+        <!--<p class="btn btn-info"><a href="/teams/{{teams.teamid}}/members/new">Add Member</a></p> &nbsp;-->
         <p class="btn btn-danger"><a href="/teams/{{teams.teamid}}/delete">Delete Team</a></p> &nbsp;
         <p class="btn btn-warning"><a href="/">Return to Home Page</a></p>
     </div>
